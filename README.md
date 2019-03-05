@@ -1,2 +1,2 @@
 # Physics-Simulator
-AP Physics 1 project - A Physics sandbox showing different forces, collisions, etc
+AP Physics 1 Final Project - A Physics sandbox showing different forces, collisions, etc
