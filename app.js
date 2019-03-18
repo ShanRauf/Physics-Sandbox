@@ -1,27 +1,30 @@
+// import {Bodies} from "matter";
+import Box from './js/bodies/Box.js';
+
 // module aliases
-var Engine = Matter.Engine,
-    World = Matter.World,
-    Bodies = Matter.Bodies;
+var Engine = Matter.Engine;
+var World = Matter.World;
 
 var engine;
 var world;
-var box1;
-var ground;
+var ground = Matter.Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
+var box1 = new Box(200, 100, 50, 50);
 
-function setup() {
-    createCanvas(800, 800);
-    engine = Engine.create();
-    world = engine.world
+let s = (sk) => {    
+    sk.setup = () =>{
+        sk.createCanvas(800, 800);;
+        engine = Engine.create();
+        world = engine.world
 
-    ground = Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
+        Engine.run(engine);
+    
+        World.add(world, [box1, ground]);
+    }
 
-    // add bodies to the world
-    Engine.run(engine);
-    box1 = new Box(200, 100, 50, 50);
-    World.add(world, ground);
+    sk.draw = () =>{
+        sk.background(51);
+        // box1.show();
+    }
 }
 
-function draw() {
-    background(51);
-    box1.show();
-}
+const P5 = new p5(s);
