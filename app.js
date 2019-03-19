@@ -1,30 +1,40 @@
-// import {Bodies} from "matter";
-import Box from './js/bodies/Box.js';
+import Box from './js/bodies/Box';
+import Circle from './js/bodies/Circle';
+// import Trapezoid from './js/bodies/Trapezoid';
 
 // module aliases
-var Engine = Matter.Engine;
-var World = Matter.World;
+const Engine = Matter.Engine;
+const World = Matter.World;
+const Bodies = Matter.Bodies;
+const engine = Engine.create();
+const world = engine.world;
 
-var engine;
-var world;
-var ground = Matter.Bodies.rectangle(400, 610, 810, 60, { isStatic: true });
-var box1 = new Box(200, 100, 50, 50);
+var box1 = new Box(200, 100, 80, 80);
+var ground = new Box(400, 700, 810, 60, { isStatic: true, friction: 1, restitution: 1 });
+var circle1 = new Circle(300, 300, 30);
 
-let s = (sk) => {    
-    sk.setup = () =>{
-        sk.createCanvas(800, 800);;
-        engine = Engine.create();
-        world = engine.world
+var objects = [box1, circle1, ground];
 
+const s = (sketch) => {    
+    sketch.setup = () => {
+        sketch.createCanvas(800, 800);        
+
+        World.add(world, [box1.body, circle1.body, ground.body]);
         Engine.run(engine);
-    
-        World.add(world, [box1, ground]);
     }
 
-    sk.draw = () =>{
-        sk.background(51);
-        // box1.show();
+    sketch.draw = () => {
+        sketch.background(51);
+        
+        for (let i = 0; i < objects.length; i++) {
+            objects[i].show(sketch);
+        }
+    }
+    sketch.mouseDragged = () => {
+        let circle2 = new Circle(sketch.mouseX, sketch.mouseY, 30);
+        World.add(world, circle2.body);
+        objects.push(circle2);
     }
 }
 
-const P5 = new p5(s);
+var P5 = new p5(s);

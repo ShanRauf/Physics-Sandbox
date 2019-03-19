@@ -7,8 +7,10 @@
     "lib": "lib"
   },
   "scripts": {
-    "start": "echo 'Starting Webpack dev server! \n' && webpack-dev-server --config ./webpack.config.js --mode development",
-    "build": "webpack"
+    "start": "webpack-dev-server --config ./webpack/webpack.config.js --open --hot --mode development",
+    "build": "webpack --mode production",
+    "lint": "eslint **/*.js --ignore-pattern node_modules/ --ignore-pattern webpack/ --ignore-pattern lib/ --ignore-pattern dist/ --ignore-pattern js/bodies/",
+    "lint-fix": "eslint --ext .js --fix"
   },
   "repository": {
     "type": "git",
@@ -22,15 +24,24 @@
   "homepage": "https://github.com/ShanRauf/Physics-Sandbox#readme",
   "dependencies": {
     "babel": "^6.23.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.5",
     "matter-js": "^0.14.2",
     "p5": "^0.7.3"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^8.0.5",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.15.3",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.3",
+    "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
