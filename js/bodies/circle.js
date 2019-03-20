@@ -12,8 +12,13 @@ export default class Circle {
 		sketch.rotate(angle);
 		sketch.stroke(255);
 		sketch.fill(127);
-		sketch.strokeWeight(4);
+		sketch.strokeWeight(2);
 		sketch.circle(0, 0, this.body.circleRadius); // Need to use body parameters in case user changes them in UI... probably
 		sketch.pop();
+	}
+
+	isOffScreen(sketch) {
+		var pos = this.body.position;
+		return (pos.y < -500);
 	}
 }
