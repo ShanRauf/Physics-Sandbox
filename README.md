@@ -1,2 +1,2 @@
 # Physics-Simulator
-AP Physics 1 Final Project - A Physics sandbox showing different forces, collisions, etc
+A Physics sandbox displaying forces, collisions, rotation, momentum, electrostatics, etc. Users can interact with every objct in the simulator and observe physics concepts
