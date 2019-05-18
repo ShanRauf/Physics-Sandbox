@@ -24,8 +24,7 @@
   "homepage": "https://github.com/ShanRauf/Physics-Sandbox#readme",
   "dependencies": {
     "babel": "^6.23.0",
-    "matter-js": "^0.14.2",
-    "p5": "^0.7.3"
+    "matter-js": "^0.14.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",

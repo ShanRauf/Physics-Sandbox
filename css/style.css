@@ -4,5 +4,15 @@ body {
 }
 
 .physics-simulator {
-	
+	width: 75%;
+	margin: auto;
+	display: block;
+	float: left;
+}
+
+.sidepanel {
+	width: 25%;
+	display: block;
+	margin: auto;
+	float: left;
 }
