@@ -30,7 +30,7 @@ const Render = Matter.Render;
 
 
 // Objects
-var box1 = new Box(100, 100, 80, 80);
+var box1 = new Box(100, 100, 160, 160, {friction: 0});
 console.log(box1);
 var ground = new Box(400, 540, 1200, 60, { isStatic: true, render: {visible: false}, friction: 0, restitution: 1 });
 var circle1 = new Circle(600, 300, 30);
@@ -72,8 +72,8 @@ window.onload = () => {
             }
         });
     World.add(world, mouseConstraint);
-    World.add(world, ground.body)
-    World.add(world, [box1.body, circle1.body, car.body, cradle.body]);
+    // World.add(world, ground.body)
+    // World.add(world, [box1.body, circle1.body]);
     Engine.run(engine);
 
 
