@@ -26,18 +26,18 @@ const MouseConstraint = Matter.MouseConstraint;
 const Mouse = Matter.Mouse;
 const Render = Matter.Render;
 
+// (How to do it) var box1 = new Box(100, 100, 80, 80, {render: {sprite: {texture: './img/box.png'}}});
+
+
 // Objects
 var box1 = new Box(100, 100, 80, 80);
 console.log(box1);
-var ground = new Box(400, 530, 1200, 60, { isStatic: true, render: {visible: false}, friction: 0, restitution: 1 });
-var circle1 = new Circle(300, 300, 30);
+var ground = new Box(400, 540, 1200, 60, { isStatic: true, render: {visible: false}, friction: 0, restitution: 1 });
+var circle1 = new Circle(600, 300, 30);
 console.log(circle1);
 var pendulum = new Pendulum(400, 400, 1, 20, 80);
-console.log(pendulum);
 var car = new Car(400, 400, 150, 30, 30);
-console.log(car);
 var cradle = new NewtonCradle(280, 100, 5, 30, 200);
-console.log(cradle);
 
 window.onload = () => {
 	const simulatorContainer = document.getElementById('physics-simulator');
@@ -73,8 +73,7 @@ window.onload = () => {
         });
     World.add(world, mouseConstraint);
     World.add(world, ground.body)
-    // World.add(world, [box1.body, circle1.body, car.body, cradle.body]);
-
+    World.add(world, [box1.body, circle1.body, car.body, cradle.body]);
     Engine.run(engine);
 
 
