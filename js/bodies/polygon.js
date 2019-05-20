@@ -1,6 +1,6 @@
-function Polygon(x, y, sides, radius) {
+export default class Polygon {
 
-	this.show = function() {
+	constructor(x, y, sides, radius) {
 
 	}
 }
