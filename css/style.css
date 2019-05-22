@@ -16,8 +16,3 @@ body {
 	margin: auto;
 	float: left;
 }
-
-/* Responsive Matter.js canvas */
-#canvas {
-	width: 100%;
-}

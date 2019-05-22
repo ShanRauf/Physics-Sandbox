@@ -1,3 +1,5 @@
+var Matter = require('matter-js');
+
 export default class Boundary {
 	constructor(x, y, w, h, options) {
 		this.body = Matter.Bodies.rectangle(x, y, w, h, options);

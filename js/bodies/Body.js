@@ -1,3 +1,5 @@
+var Matter = require('matter-js');
+
 export default class Body {
 	isOffScreen(sketch) {
 		var pos = this.body.position;

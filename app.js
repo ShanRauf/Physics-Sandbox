@@ -1,6 +1,6 @@
-var matterAttractors = require('matter-attractors');
-
 var Matter = require('matter-js');
+
+var matterAttractors = require('matter-attractors');
 Matter.use('matter-attractors');
 
 import Box from './js/bodies/Box';
@@ -28,9 +28,8 @@ const Render = Matter.Render;
 
 // (How to do it) var box1 = new Box(100, 100, 80, 80, {render: {sprite: {texture: './img/box.png'}}});
 
-
 // Objects
-var box1 = new Box(100, 100, 160, 160, {friction: 0});
+var box1 = new Box(100, 100, 80, 80, {friction: 0});
 console.log(box1);
 var ground = new Box(400, 540, 1200, 60, { isStatic: true, render: {visible: false}, friction: 0, restitution: 1 });
 var circle1 = new Circle(600, 300, 30);
@@ -72,10 +71,9 @@ window.onload = () => {
             }
         });
     World.add(world, mouseConstraint);
-    // World.add(world, ground.body)
-    // World.add(world, [box1.body, circle1.body]);
+    World.add(world, ground.body)
+    World.add(world, [box1.body, circle1.body]);
     Engine.run(engine);
-
 
     // // Wrecking Ball
     // var rows = 10,
@@ -94,7 +92,6 @@ window.onload = () => {
     //     pointA: { x: 300, y: 100 },
     //     bodyB: ball
     // }));
-
 
 	// Catapult
     // var group = Body.nextGroup(true);
@@ -119,7 +116,6 @@ window.onload = () => {
     //     })
     // ]);
 
-
 // 2 attracted objects
 
 // var body = Matter.Bodies.circle(100, 100, 25, {
@@ -134,7 +130,5 @@ window.onload = () => {
 //     ]
 //   }
 // });
-
 // World.add(world, body);
-
 }
