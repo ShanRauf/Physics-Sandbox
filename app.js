@@ -29,13 +29,19 @@ const Render = Matter.Render;
 // (How to do it) var box1 = new Box(100, 100, 80, 80, {render: {sprite: {texture: './img/box.png'}}});
 
 // Objects
-var box1 = new Box(100, 100, 80, 80, {friction: 0});
-console.log(box1);
 var ground = new Box(400, 540, 1200, 60, { isStatic: true, render: {visible: false}, friction: 0, restitution: 1 });
+
+var box1 = new Box(100, 100, 80, 80, {friction: 0, frictionAir: 0, lineWidth: 9});
+console.log(box1.body.id);
+
 var circle1 = new Circle(600, 300, 30);
+console.log(circle1.body.id);
 console.log(circle1);
+
 var pendulum = new Pendulum(400, 400, 1, 20, 80);
+
 var car = new Car(400, 400, 150, 30, 30);
+
 var cradle = new NewtonCradle(280, 100, 5, 30, 200);
 
 window.onload = () => {
@@ -64,12 +70,14 @@ window.onload = () => {
         mouseConstraint = MouseConstraint.create(engine, {
             mouse: mouse,
             constraint: {
-                stiffness: 1,
+                stiffness: .8,
                 render: {
                     visible: false
                 }
             }
         });
+    Mouse.setElement(mouse, simulatorContainer);
+
     World.add(world, mouseConstraint);
     World.add(world, ground.body)
     World.add(world, [box1.body, circle1.body]);
