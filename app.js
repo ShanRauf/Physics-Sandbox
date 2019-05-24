@@ -8,6 +8,7 @@ import Circle from './js/bodies/Circle';
 import Pendulum from './js/bodies/Pendulum';
 import Car from './js/bodies/Car';
 import NewtonCradle from './js/bodies/NewtonCradle';
+import Ruler from './js/bodies/Ruler';
 // import Trapezoid from './js/bodies/Trapezoid';
 // import Polygon from './js/bodies/Polygon';
 
@@ -33,6 +34,8 @@ var ground = new Box(400, 540, 1200, 60, { isStatic: true, render: {visible: fal
 
 var box1 = new Box(100, 100, 80, 80, {friction: 0, frictionAir: 0, lineWidth: 9});
 console.log(box1.body.id);
+
+var ruler1 = new Ruler();
 
 var circle1 = new Circle(600, 300, 30);
 console.log(circle1.body.id);
@@ -80,7 +83,7 @@ window.onload = () => {
 
     World.add(world, mouseConstraint);
     World.add(world, ground.body)
-    World.add(world, [box1.body, circle1.body]);
+    World.add(world, [box1.body, circle1.body, ruler.body]);
     Engine.run(engine);
 
     // // Wrecking Ball
