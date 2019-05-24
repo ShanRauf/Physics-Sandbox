@@ -3,16 +3,14 @@ body {
 	height: 100%;
 }
 
-.physics-simulator {
-	width: 75%;
-	margin: auto;
-	display: block;
-	float: left;
+.physics-simulator-container {
+	width: 70%;
+	margin: 50px;
 }
 
-.sidepanel {
-	width: 25%;
+.physics-simulator {
+	width: 100%;
+	margin: 10px;
 	display: block;
-	margin: auto;
 	float: left;
 }

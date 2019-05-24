@@ -7,3 +7,6 @@ export default class Box {
 		this.h = h;
 	}
 }
+
+// Based on the vertices, create method that calculates the exact center of the object;
+// could be used for auto moving cursor to center of mass for force application
