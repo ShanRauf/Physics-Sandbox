@@ -31,7 +31,6 @@ var defaultCategory = 0x0001,
     transparentCategory = 0x0002;
 
 // Global Objects
-var ground = new Box(400, 540, 1200, 60, {label: 'ground', friction: 0.1, isStatic: true, collisionFilter: {category: transparentCategory}, render: {visible: false}, restitution: 0 });
 var ruler1 = new Ruler();
 
 
@@ -57,7 +56,6 @@ window.onload = () => {
     Render.run(render);
     createMouse(render, simulatorContainer);
 
-    World.add(world, ground.body);
     World.add(world, ruler1.body);
     createMouse(render, simulatorContainer);
 
@@ -78,7 +76,7 @@ window.onload = () => {
             world.gravity.y = this.innerHTML;
         }
         else if(objectNumber == 1) { // Air Resistance
-            for(var i=0; i<objects.length; i++) {
+            for(let i=0; i<objects.length; i++) {
                 objects[this.parentNode.id].body.frictionAir = this.innerHTML;
             }
         }
@@ -105,17 +103,11 @@ window.onload = () => {
     else if(sitePath == '/incline.html') {
         incline();
     }
-    // else if(sitePath == '/gravitational-attraction.html') {
-    //     friction();
-    //     gravitationalAttraction();
-    // }
 }
 
 
-
-
     function createRows(objects) {
-        for (var i=0; i < objects.length; i++) {
+        for (let i=0; i < objects.length; i++) {
             var row = table.insertRow(i);
             row.id = i;
 
@@ -159,10 +151,10 @@ window.onload = () => {
             density.className += 'pt-3-half';
             density.innerHTML = objects[i].body.density;
 
-            var restitutionCoeff = row.insertCell(8);
-            restitutionCoeff.contentEditable = 'true';
-            restitutionCoeff.className += 'pt-3-half';
-            restitutionCoeff.innerHTML = objects[i].body.restitution;
+            var restitution = row.insertCell(8);
+            restitution.contentEditable = 'true';
+            restitution.className += 'pt-3-half';
+            restitution.innerHTML = objects[i].body.restitution;
 
             var friction = row.insertCell(9);
             friction.contentEditable = 'true';
@@ -181,7 +173,7 @@ window.onload = () => {
             btn.value = i;
             forceButton.appendChild(btn);
             btn.addEventListener("click", function(){
-                Body.applyForce(objects[this.value].body, objects[this.value].body.position, {x: .10, y: 0});
+                Body.applyForce(objects[this.value].body, objects[this.value].body.position, {x: .20, y: 0});
             });
 
             var removeButton = row.insertCell(12);
@@ -199,6 +191,7 @@ window.onload = () => {
 
         $('#table tr td').on("DOMSubtreeModified", function(){
             var objectNumber = this.cellIndex; // which column
+            console.log(objectNumber);
             if((isNaN(this.innerHTML) || this.innerHTML == '' || this.innerHTML > 100) || this.innerHTML < 0) {
                 // Do nothing - either too large of a value, or nothing in table
                 return;
@@ -242,13 +235,15 @@ window.onload = () => {
     }
 
 
-    function reset() {
-        World.clear(world, true);
-    }
+    // function reset() {
+    //     World.clear(world, true);
+    // }
 
     function friction() {
         var objects = [];
         // Objects
+        var ground = new Box(400, 540, 1200, 60, {label: 'ground', friction: 0, isStatic: true, collisionFilter: {category: transparentCategory}, render: {visible: false}, restitution: 0 });
+
         var box1 = new Box(100, 100, 80, 80, {
             label: 'box', 
             // render: {
@@ -283,9 +278,9 @@ window.onload = () => {
         frictionAir: 0
         });
 
-        objects = [box1, box2, circle1];
+        objects = [box1, box2, circle1, ground];
         
-        for (var i=0; i < objects.length; i++) {
+        for (let i=0; i < objects.length; i++) {
             World.add(world, objects[i].body);
         };
         
@@ -294,21 +289,21 @@ window.onload = () => {
 
     function pendulum() {
         var objects = [];
+        var ground = new Box(400, 540, 1200, 60, {label: 'ground', friction: 0, isStatic: true, collisionFilter: {category: transparentCategory}, render: {visible: false}, restitution: 0 });
         // var pendulum = new Pendulum(400, 200, 1, 25, 100);
-        // World.add(world, pendulum.body);
        
         var cradle = new NewtonCradle(280, 100, 5, 30, 200);
-        World.add(world, cradle.body);
-        // for (var i=0; i < pendulum.body.bodies.length; i++) {
-        //     createRows(pendulum.body.bodies[i]);
-        // };
 
-
+        objects = [cradle, ground];
+        for (let i=0; i < objects.length; i++) {
+            World.add(world, objects[i].body);
+        };
     }
 
     function wreckingBall() {
         const objects = [];
-
+        var ground = new Box(400, 540, 1200, 60, {label: 'ground', friction: 0, isStatic: true, collisionFilter: {category: transparentCategory}, render: {visible: false}, restitution: 0 });
+        World.add(world, ground.body);
         // // Wrecking Ball
         var rows = 10,
             yy = 600 - 21 - 40 * rows;
@@ -331,30 +326,34 @@ window.onload = () => {
     function momentum() {
         var objects = [];
         // Objects
+        var ground = new Box(400, 540, 1200, 60, {label: 'ground', friction: 0, isStatic: true, collisionFilter: {category: transparentCategory}, render: {visible: false}, restitution: 0 });
         var box1 = new Box(100, 100, 70, 70, {
             label: 'box', 
             // render: {
                 // sprite: {
                 //     texture: './img/box.png'}
                 // }, 
-            friction: 0, 
+            friction: 0.1, 
             collisionFilter: {
                 category: defaultCategory}, 
-            frictionAir: 0});
-        var box2 = new Box(300, 100, 80, 80, {
+            frictionAir: 0
+        });
+        console.log(box1);
+        var box2 = new Box(300, 100, 70, 70, {
             label: 'box', 
             // render: {
                 // sprite: {
                 //     texture: './img/box.png'}
                 // }, 
-            friction: 0, 
+            friction: 0.1, 
             collisionFilter: {
                 category: defaultCategory}, 
-            frictionAir: 0});
+            frictionAir: 0
+        });
 
-        objects = [box1, box2];
+        objects = [box1, box2, ground];
         
-        for (var i=0; i < objects.length; i++) {
+        for (let i=0; i < objects.length; i++) {
             World.add(world, objects[i].body);
         };
         
@@ -389,6 +388,7 @@ window.onload = () => {
     function incline() {
         var objects = [];
 
+        var ground = new Box(400, 540, 1200, 60, {label: 'ground', friction: 0, isStatic: true, collisionFilter: {category: transparentCategory}, render: {visible: false}, restitution: 0 });
         var incline = new Box(250, 400, 800, 30, {
             isStatic: true,
             friction: 0,
@@ -421,7 +421,7 @@ window.onload = () => {
 
         objects = [box1, circle1, incline, ground];
 
-        for (var i=0; i < objects.length; i++) {
+        for (let i=0; i < objects.length; i++) {
             World.add(world, objects[i].body);
         };
 
