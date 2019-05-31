@@ -64,6 +64,17 @@
 				</nav>			
 			</div>
 			<div>
+				<button type="button" class="btn btn-success">Play</button>
+				<button type="button" class="btn btn-secondary">Pause</button>
+				<button type="button" class="btn btn-dark" onclick="location.reload()">Reset</button>
+				<br><br>
+				<button type="button" class="btn btn-info" id="create-box-button">Create Box</button>
+				<button type="button" class="btn btn-info" id="create-circle-button">Create Circle</button>
+				<button type="button" class="btn btn-info" id="create-car-button">Create Car</button>
+				<button type="button" class="btn btn-primary" id="apply-force">Apply Force</button>
+
+				    Force: <input type="text" name="force" id="force" placeholder="x y" style="display: inline"><br>
+
 				<div class="table-editable">
 			      <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
 			            class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
@@ -81,7 +92,6 @@
 			            <th class="text-center">Restitution (0-1)</th>
 			            <th class="text-center" style="font-size:20px">μ<span style= "font-size: 12px">k</span> (0-1)</th>
 			            <th class="text-center" style="font-size:20px">μ<span style= "font-size: 12px">s</span> (0-1)</th>
-			            <th class="text-center">Apply Force</th>
 			            <th class="text-center">Remove Object</th>
 			          </tr>
 			        </thead>
