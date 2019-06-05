@@ -9,8 +9,6 @@ import Pendulum from './js/bodies/Pendulum';
 import Car from './js/bodies/Car';
 import NewtonCradle from './js/bodies/NewtonCradle';
 import Ruler from './js/bodies/Ruler';
-// import Trapezoid from './js/bodies/Trapezoid';
-// import Polygon from './js/bodies/Polygon';
 
 // module aliases
 const Engine = Matter.Engine;
@@ -36,7 +34,6 @@ window.onload = () => {
 	const simulatorContainer = document.getElementById('physics-simulator');
     const table = document.getElementById("table");
     const applyForceButton = document.getElementById("apply-force");
-
     var ruler1 = new Ruler();
 
     // Renderer options
@@ -53,9 +50,8 @@ window.onload = () => {
         engine: engine,
         options: options
     });
-
     Render.run(render);
-
+    
     World.add(world, ruler1.body);
     
     Engine.run(engine);
@@ -70,9 +66,7 @@ window.onload = () => {
                 }
             }
         });
-
         mouseConstraint.collisionFilter.mask = defaultCategory | transparentCategory;
-        // mouseConstraint.collisionFilter.category = defaultCategory | transparentCategory; if want ruler movable as well
         mouseConstraint.collisionFilter.category = defaultCategory;
     Mouse.setElement(mouse, simulatorContainer);
     World.add(world, mouseConstraint);
@@ -123,7 +117,6 @@ window.onload = () => {
     });
     
     var sitePath = window.location.pathname;
-
     if(sitePath == '/') {
         document.getElementById("create-box-button").addEventListener("click", createBox);
 		document.getElementById("create-circle-button").addEventListener("click", createCircle);
@@ -241,7 +234,7 @@ function createRows(objects) {
         var objectNumber = this.cellIndex; // which column
         console.log(objectNumber);
         if((isNaN(this.innerHTML) || this.innerHTML == '' || this.innerHTML > 100) || this.innerHTML < 0) {
-            // Do nothing - either too large of a value, or nothing in table
+            // Do nothing - too large or empty value
             return;
         }
         if(objectNumber == 0) {
@@ -498,5 +491,3 @@ function createCar() {
 	var car = new Car(500, 100, 200, 15, 25);
 	World.add(world, car.body);
 }
-
-
