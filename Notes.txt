@@ -1,14 +1,13 @@
 Bugs:
 00 mass makes blocks disappear
-force applying seems wrong – 1N shoots object
+force applying seems wrong... 1N shoots object
 not turning off listeners when selecting object to apply force
-1N of force shoots object so far... fix sizing to match real life more
 Value table is really messed up... look at comments
 
 Look into:
 t for applyForce? how do you even do some kinematic calculations w/o t?
 Constant forces for time t using matter-attractors? or...?
-
+AP Phys doesn't deal w rotating boxes... option to enable/disable?
 
 Add now:
 marker on circle so can count rotations
@@ -19,13 +18,24 @@ Clear button
 
 
 Add:
+MongoDB, Nodejs, passport for sharing features
+
+Creator:
+matterWrap option
+Automatically scale objects based on mass (checkbox to disable)
+Auto-change object color based on density
+Simplify collision filtering for users (ex turn off/on objects, edit opacity to see diff I cylinders slide down ramp)
+Sensors to add/remove constant forces (friction, general const force) in user-selectable area (ex problems where friction applied on object for x distance)
+Save all properties of objects, including forces to apply on Play (json)
+User upload backgrounds (might be difficult cuz of current setup...)
+Disable UI options for user to play w (ex dont allow viewing FBD)
+
+Etc:
 toggle xy axis for measurements instead of a ruler... Button for user to draw on axis (to save points; change cursor from pointer)
 Springs functionality
 Formula-sheet
-Simplify collision filtering for users to turn off/on objects (ex filtering and opacity: see diff I cylinders slide down a ramp)
-Sensors to add/remove constant forces(friction, general const force) in user-selectable area (ex problems where friction applied on object for x distance)
 Scale objects automatically based on user-set-mass; change object color/darkness based on density, etc
-FBD (on hover or always on; display N of force, ex Fg = mg): Gravity down, Fn perp to surface, frict parallel, tension pointing at sprint
+FBD (dropdown:off,onHover, On; display N of force, ex Fg = mg): Gravity down, Fn perp to surface, frict parallel, tension pointing at sprint
 object velocity indicator (ex tangent velocity vector)
 Max user input limits to avoid crashes
 Dynamic graph drawing of user-selected x,y values (ex v over t, torque & rotations)
@@ -34,11 +44,12 @@ Generalize body classes, make parameters able to create diff momOfIntert objects
 Add 2 masses w light cord on frictionless pulley
 Draw force onto object, apply on play
 Display N of force when drawing arrow for force
-User can select where on object to apply force (point, direction, magnitude)
+Draw where on object to apply force (point, direction, magnitude)
 Contact form or link to GitHub issues for feature requests, bugs, etc
 Sharing Physics Simulator setups (passport auth) (teachers can use) (save user objects via json w values)
 Examples tab (like p5editor one): pi approximation, pendulum, etc complex setups to show capabilities
 "?" icons to explain physics concepts (ex ? on FBD forces, UI values like g, I, v, w, etc)
+Ability to hide "?" tooltips
 Magnetism stuff
 Positive/negative particle stuff
 Let user give objects magnetic/electric properties (ex let user set object as 1e, otehr object as -1e; attract accordingly)

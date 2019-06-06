@@ -9,6 +9,7 @@ import Pendulum from './js/bodies/Pendulum';
 import Car from './js/bodies/Car';
 import NewtonCradle from './js/bodies/NewtonCradle';
 import Ruler from './js/bodies/Ruler';
+import Stopwatch from './js/Stopwatch';
 
 // module aliases
 const Engine = Matter.Engine;
