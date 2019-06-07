@@ -1,5 +1,5 @@
 // https://codepen.io/_Billy_Brown/pen/dbJeh
-export class Stopwatch {
+export default class Stopwatch {
     constructor(displayElement, resultsListElement) {
         this.running = false;
         this.display = displayElement;
@@ -11,6 +11,7 @@ export class Stopwatch {
     
     reset() {
         this.times = [ 0, 0, 0 ];
+        this.print(); // To display the change in the DOM
     }
     
     start() {
@@ -28,7 +29,7 @@ export class Stopwatch {
         this.results.appendChild(li);
     }
     
-    stop() {
+    pause() {
         this.running = false;
         this.time = null;
     }
@@ -80,16 +81,20 @@ export class Stopwatch {
         ${pad0(times[1], 2)}:\
         ${pad0(Math.floor(times[2]), 2)}`;
     }
+}
 
-    pad0(value, count) {
-        var result = value.toString();
-        for (; result.length < count; --count)
-            result = '0' + result;
-        return result;
+
+export function pad0(value, count) {
+    var result = value.toString();
+    for (; result.length < count; --count) {
+        result = '0' + result;
     }
-    clearChildren(node) {
-        while (node.lastChild)
-            node.removeChild(node.lastChild);
+    return result;
+}
+
+export function clearChildren(node) {
+    while (node.lastChild) {
+        node.removeChild(node.lastChild);
     }
 }
 

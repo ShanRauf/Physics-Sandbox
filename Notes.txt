@@ -7,14 +7,18 @@ Value table is really messed up... look at comments
 Look into:
 *applyForce is really giving object a velocity vector, so
 create ur own applyVelocity function so that code reads better
-
+if ruler wasn't an object, could use object id's as another identifier
+http://brm.io/matter-js/docs/classes/Engine.html
+^ has a lot that can use for timeline, graphs, etc
 onPushToObjectsArray, create row and add to world? opposite for remove from array?
 Constant forces for time t using matter-attractors? or...?
 AP Phys doesn't deal w rotating boxes... option to enable/disable?
 
 Add now:
 marker on circle so can count rotations
-(or have counters on the side after Play; ex total dist, total displacement, total rotations)
+(on Play, calc tihngs like total dist, total displacement, total rotations
+so users can use the generated values in graph)
+^ maybe ask user to specify values wnt to track so runs smoother
 Create object path (visualize projectile motion; path on after play)
 On play, just show action (dynamically display values, but dont allow user to change values)
 Clear button
@@ -22,8 +26,14 @@ Clear button
 
 Add:
 MongoDB, Nodejs, passport for sharing features
+buttons for objects that looks like the object
+rn, pos/velocity y table manually does calc based on 540 (canvas height)
+fix for responsivenes ^
+btw add responsiveness
 
 function to Body to get all body values to add to UI
+
+on OffScreen, delete from world and table (although prob wont have table in future..., just selectable stuff)
 
 use Matter.Query.collides(body, bodies) to track collisiosn after "Play"
 Apply button for object properties maybe...

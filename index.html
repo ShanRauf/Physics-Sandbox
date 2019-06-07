@@ -34,7 +34,7 @@
 				<nav>
 					<ul class="nav nav-tabs">
 					  <li class="nav-item">
-					    <a class="nav-link" href="./">Friction</a>
+					    <a class="nav-link" href="./index.html">Friction</a>
 					  </li>
 					  <li class="nav-item">
 					    <a class="nav-link" href="./pendulum.html" >Pendulum</a>
@@ -63,19 +63,23 @@
 					</ul>
 				</nav>			
 			</div>
-			<ul class="results">Rest</ul>
+
 			<div>
-				<button type="button" class="btn btn-success">Start</button>
-				<button type="button" class="btn btn-secondary">Pause</button>
-				<button type="button" class="btn btn-primary" id ="clear">Clear</button>
-				<button type="button" class="btn btn-dark" onclick="location.reload()">Reset</button>
-				<br><br>
+				<button type="button" class="btn btn-success" id="start">Start</button>
+				<button type="button" class="btn btn-secondary" id="pause">Pause</button>
+				<button type="button" class="btn btn-primary" id="lap">Lap</button>
+				<button type="button" class="btn btn-secondary" id="reset">Reset</button>
+				<button type="button" class="btn btn-dark" id="restart">Restart</button>
+				<button type="button" class="btn btn-danger" id="clear">Clear Laps</button>
+
+				<div class="stopwatch" style="font-size: 40px"></div>
+
 				<button type="button" class="btn btn-info" id="create-box-button">Create Box</button>
 				<button type="button" class="btn btn-info" id="create-circle-button">Create Circle</button>
 				<button type="button" class="btn btn-info" id="create-car-button">Create Car</button>
-				<button type="button" class="btn btn-primary" id="apply-force">Apply Velocity</button>
-
-				    Force: <input type="text" name="force" id="force" placeholder="x y" style="display: inline"><br>
+				<button type="button" class="btn btn-primary" id="apply-force">Apply Force (1ms)</button>
+				Force: <input type="text" name="force" id="force" placeholder="x y (ex: .5 1)" style="display: inline">
+				<label class="checkbox-inline"><input id="object-path-checkbox" type="checkbox" value="">Display Object Path (disabled - for projectile motion)</label>
 
 				<div class="table-editable">
 			      <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
@@ -125,6 +129,8 @@
 				      </tr>
 				    </tbody>
 				</table>
+
+				<ul class="results"></ul>
 			</div>
 		</div>
 	</body>

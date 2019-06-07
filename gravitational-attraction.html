@@ -34,7 +34,7 @@
 				<nav>
 					<ul class="nav nav-tabs">
 					  <li class="nav-item">
-					    <a class="nav-link" href="./">Friction</a>
+					    <a class="nav-link" href="./index.html">Friction</a>
 					  </li>
 					  <li class="nav-item">
 					    <a class="nav-link" href="./pendulum.html" >Pendulum</a>
@@ -63,10 +63,24 @@
 					</ul>
 				</nav>			
 			</div>
+
 			<div>
+				<button type="button" class="btn btn-success" id="start">Start</button>
+				<button type="button" class="btn btn-secondary" id="pause">Pause</button>
+				<button type="button" class="btn btn-primary" id="lap">Lap</button>
+				<button type="button" class="btn btn-secondary" id="reset">Reset</button>
+				<button type="button" class="btn btn-dark" id="restart">Restart</button>
+				<button type="button" class="btn btn-danger" id="clear">Clear Laps</button>
+
+				<div class="stopwatch" style="font-size: 40px"></div>
+
 				<button type="button" class="btn btn-info" id="create-box-button">Create Box</button>
 				<button type="button" class="btn btn-info" id="create-circle-button">Create Circle</button>
 				<button type="button" class="btn btn-info" id="create-car-button">Create Car</button>
+				<button type="button" class="btn btn-primary" id="apply-force">Apply Force (1ms)</button>
+				Force: <input type="text" name="force" id="force" placeholder="x y (ex: .5 1)" style="display: inline">
+				<label class="checkbox-inline"><input id="object-path-checkbox" type="checkbox" value="">Display Object Path (disabled - for projectile motion)</label>
+
 				<div class="table-editable">
 			      <span class="table-add float-right mb-3 mr-2"><a href="#!" class="text-success"><i
 			            class="fas fa-plus fa-2x" aria-hidden="true"></i></a></span>
@@ -75,8 +89,8 @@
 			          <tr>
 			            <th class="text-center">Object</th>
 			            <th class="text-center">Mass (g)</th>
-			            <th class="text-center">{x,y}</th>
-			            <th class="text-center">{x',y'}</th>
+			            <th class="text-center">x y</th>
+			            <th class="text-center">x' y'</th>
 			            <th class="text-center">τ</th>
 			            <th class="text-center">ω</th>
 			            <th class="text-center">I</th>
@@ -84,7 +98,6 @@
 			            <th class="text-center">Restitution (0-1)</th>
 			            <th class="text-center" style="font-size:20px">μ<span style= "font-size: 12px">k</span> (0-1)</th>
 			            <th class="text-center" style="font-size:20px">μ<span style= "font-size: 12px">s</span> (0-1)</th>
-			            <th class="text-center">Apply Force</th>
 			            <th class="text-center">Remove Object</th>
 			          </tr>
 			        </thead>
@@ -116,6 +129,8 @@
 				      </tr>
 				    </tbody>
 				</table>
+
+				<ul class="results"></ul>
 			</div>
 		</div>
 	</body>
