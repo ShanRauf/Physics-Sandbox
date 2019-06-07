@@ -10,3 +10,4 @@ export default class Box {
 
 // Based on the vertices, create method that calculates the exact center of the object;
 // could be used for auto moving cursor to center of mass for force application
+// I think position actually returns this ^

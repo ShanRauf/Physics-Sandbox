@@ -5,7 +5,10 @@ not turning off listeners when selecting object to apply force
 Value table is really messed up... look at comments
 
 Look into:
-t for applyForce? how do you even do some kinematic calculations w/o t?
+*applyForce is really giving object a velocity vector, so
+create ur own applyVelocity function so that code reads better
+
+onPushToObjectsArray, create row and add to world? opposite for remove from array?
 Constant forces for time t using matter-attractors? or...?
 AP Phys doesn't deal w rotating boxes... option to enable/disable?
 
@@ -19,6 +22,11 @@ Clear button
 
 Add:
 MongoDB, Nodejs, passport for sharing features
+
+function to Body to get all body values to add to UI
+
+use Matter.Query.collides(body, bodies) to track collisiosn after "Play"
+Apply button for object properties maybe...
 
 Creator:
 matterWrap option
